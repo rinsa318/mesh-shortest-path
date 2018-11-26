@@ -9,16 +9,22 @@
 
 ## How to run
 
-'''
+```
 python3 main.py argvs[1] argvs[2]
 argvs[1] --> 最短経路を求めたい.objファイルへのパス(上図だとグレーのメッシュ)
 argvs[2] --> 求めたい頂点のインデックスが書かれた.txtファイルへのパス(上図だと青い点のインデックスが書かれたファイル)
-'''
+```
 
 
 ## Example
 
-`python main.py ./test/test.obj ./test/test_fp.txt`  
+```
+python main.py ./test/test.obj ./test/test_fp.txt
+```
 
-`./test_fp/inside.obj`  
-`./test_fp/shortest-path.txtが保存される`  
+以下が保存
+
+```
+./test_fp/inside.obj --> 上図の赤線内の領域
+./test_fp/shortest-path.txt --> 上図の赤線のインデックス
+```
