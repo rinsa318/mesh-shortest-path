@@ -5,6 +5,7 @@
 
 
 ![example](./test/example-figure.png)
+<img src="./test/example-figure.png" width=50%>
 
 
 ## How to run
