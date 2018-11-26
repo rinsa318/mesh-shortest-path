@@ -4,7 +4,7 @@
 最短経路を示す頂点のインデックス(.txt)と，最短経路で囲まれた領域でオブジェクトをカットしたもの(.obj)が保存される．
 
 
-<img src="./test/example-figure.png" width=5%>
+<img src="./test/example-figure.png" width=50%>
 
 
 ## How to run
