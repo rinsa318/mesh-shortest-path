@@ -1,4 +1,4 @@
 # find_mesh_shortest_path
 
 
-`python main.py input.obj landmark_list.txt`
+`python main.py test.obj test_fp.txt`
