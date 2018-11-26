@@ -4,8 +4,8 @@
   @Affiliation: Waseda University
   @Email: rinsa@suou.waseda.jp
   @Date: 2018-11-20 16:02:46
-  @Last Modified by:   tsukasa
-  @Last Modified time: 2018-11-26 18:27:02
+  @Last Modified by:   Tsukasa Nozawa
+  @Last Modified time: 2018-11-26 23:21:46
  ----------------------------------------------------
 
   Usage:
@@ -59,10 +59,10 @@ def display():
   glMatrixMode(GL_MODELVIEW)
   glLoadIdentity()
   ##set camera
-  gluLookAt(0.0, 0.25, -1.0, mean[0], mean[1], mean[2], 0.0, 1.0, 0.0)
-  # gluLookAt(0.0, 4.0, 0.0, mean[0], mean[1], mean[2], 1.0, 0.0, 1.0)
+  # gluLookAt(0.0, 0.25, -1.0, mean[0], mean[1], mean[2], 0.0, 1.0, 0.0)
+  gluLookAt(0.0, 5.0, 0.0, mean[0], mean[1], mean[2], 0.0, 0.0, 1.0)
 
-  light0p = [ 0.0, 0.0, -5.0, 1.0 ]
+  light0p = [ 0.0, 4.0, 0.0, 1.0 ]
   glLight(GL_LIGHT0, GL_POSITION, light0p)
   draw_obj()
   glFlush() 
@@ -80,7 +80,7 @@ def draw_obj():
   glEnable(GL_LIGHTING)
   glEnable(GL_LIGHT0)
 
-  glLineWidth(1.0)
+
   for i in range(tri.shape[0]):
     glBegin(GL_TRIANGLES)
     glColor3f(1.0, 1.0, 1.0)
@@ -95,8 +95,26 @@ def draw_obj():
 
     glEnd()
 
+
+
   glDisable(GL_LIGHTING)
   glDisable(GL_LIGHT0)
+
+  for i in range(tri.shape[0]):
+    glLineWidth(5.0)
+    glBegin(GL_LINE_LOOP)
+    glColor3f(0.0, 0.0, 0.0)
+    ver0 = ver[tri[i][0]] #* scale
+    ver1 = ver[tri[i][1]] #* scale
+    ver2 = ver[tri[i][2]] #* scale
+
+    glNormal3f(fn[i][0], fn[i][1], fn[i][2])
+    glVertex3f(ver0[0],ver0[1],ver0[2])
+    glVertex3f(ver1[0],ver1[1],ver1[2])
+    glVertex3f(ver2[0],ver2[1],ver2[2])
+
+    glEnd()
+
 
   glLineWidth(20.0)
   glBegin(GL_LINE_LOOP)
@@ -115,7 +133,7 @@ def draw_obj():
   glBegin(GL_POINTS)
   glColor3f(0.0, 0.0, 1.0)
   
-  for p in fp:
+  for p in landmark:
     ver0 = ver[p] #* scale
     glNormal3f(vn[p][0], vn[p][1], vn[p][2])
     glVertex3f(ver0[0],ver0[1],ver0[2])
@@ -301,23 +319,29 @@ def main():
   dirname = os.path.dirname(argvs[1])
   basename = os.path.basename(argvs[1])[:-4]
   basename_landmark = os.path.basename(argvs[2])[:-4]
-  write_shortest_path(dirname+"/"+basename+"_"+basename_landmark+"_sp.txt", shortest_path)
+  # write_shortest_path(dirname+"/"+basename+"_"+basename_landmark+"_sp.txt", shortest_path)
 
 
 
-  # ######################
-  # # Option. visualize apth
-  # ######################
-  # glutInit(sys.argv)
-  # glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE | GLUT_DEPTH)
-  # glutInitWindowSize(800, 800)     # window size
-  # glutInitWindowPosition(100, 100) # window position
-  # glutCreateWindow(b"test")      # show window
-  # glutDisplayFunc(display         # draw callback function
-  # glutReshapeFunc(reshape)         # resize callback function
-  # init(300, 300)
-  # glutMainLoop()
+  ######################
+  # Option. visualize apth
+  ######################
+  glutInit(sys.argv)
+  glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE | GLUT_DEPTH)
+  glutInitWindowSize(800, 800)     # window size
+  glutInitWindowPosition(100, 100) # window position
+  glutCreateWindow(b"test")      # show window
+  glutDisplayFunc(display)         # draw callback function
+  glutReshapeFunc(reshape)         # resize callback function
+  init(300, 300)
+  glutMainLoop()
 
+
+
+
+#######################
+# normal
+#######################
 # main()
 
 
@@ -325,4 +349,50 @@ def main():
 
 
 
+#######################
+# with OpenGL
+#######################
 
+# # 1. load obj
+# ver, tri = of.loadobj(argvs[1])
+# vn, fn = calcu_normqal(ver, tri)
+# mean = np.mean(ver, axis=0)
+
+
+
+# # 2. load landmark list
+
+# landmark = load_landmark(argvs[2])
+
+
+
+# # 3. apply dijkstra for shortest path
+
+
+
+# # 4. create sparse matrix and search shortest path
+# row, col, wgt = calcu_weight(ver, tri)
+# graph = csr_matrix((wgt, (row, col)), shape=(ver.shape[0], ver.shape[0]))
+# shortest_path = find_shortest_path(ver, graph, landmark)
+
+
+
+# # 5. save shortest-path as text fila
+# # dirname = os.path.dirname(argvs[1])
+# # basename = os.path.basename(argvs[1])[:-4]
+# # basename_landmark = os.path.basename(argvs[2])[:-4]
+# # write_shortest_path(dirname+"/"+basename+"_"+basename_landmark+"_sp.txt", shortest_path)
+
+
+
+
+# # 6. Option. visualize apth
+# glutInit(sys.argv)
+# glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE | GLUT_DEPTH)
+# glutInitWindowSize(800, 800)     # window size
+# glutInitWindowPosition(100, 100) # window position
+# glutCreateWindow(b"test")      # show window
+# glutDisplayFunc(display)         # draw callback function
+# glutReshapeFunc(reshape)         # resize callback function
+# init(300, 300)
+# glutMainLoop()
