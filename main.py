@@ -66,13 +66,13 @@ def load_landmark(path):
 ######################
 ver, tri = of.loadobj(argvs[1])
 # vn, fn = calcu_normqal(ver, tri)
-mean = np.mean(ver, axis=0)
+# mean = np.mean(ver, axis=0)
 
 print("input vertex of shape: {}".format(ver.shape))
 print("input triangles of shape: {}".format(tri.shape))
 # print("input vertex normal of shape: {}".format(vn.shape))
 # print("input face normal of shape: {}".format(fn.shape))
-print("mean vertex of shape: {}".format(mean))
+# print("mean vertex of shape: {}".format(mean))
 
 
 
@@ -93,7 +93,7 @@ graph = csr_matrix((wgt, (row, col)), shape=(ver.shape[0], ver.shape[0]))
 
 
 ######################
-# 4. apply dijkstra for shortest path
+# 4. apply dijkstra for shortest-path
 ######################
 shortest_path = sp.find_shortest_path(ver, graph, landmark)
 
@@ -101,14 +101,14 @@ shortest_path = sp.find_shortest_path(ver, graph, landmark)
 
 
 ######################
-# 5. find inside vertex within
+# 5. find inside vertex within shortest_path area
 ######################
 inner_face = gi.get_inside(ver, tri, graph, shortest_path)
 
 
 
 ######################
-# 5. save
+# 6. save
 ######################
 dirname = os.path.dirname(argvs[1])
 # basename = os.path.basename(argvs[1])[:-4]
