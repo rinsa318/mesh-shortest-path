@@ -4,20 +4,15 @@
   @Affiliation: Waseda University
   @Email: rinsa@suou.waseda.jp
   @Date: 2018-11-26 17:57:15
-  @Last Modified by:   tsukasa
-  @Last Modified time: 2018-11-26 18:26:03
+  @Last Modified by:   Tsukasa Nozawa
+  @Last Modified time: 2018-11-27 00:17:01
  ----------------------------------------------------
 
   Usage:
    python main.py argvs[1] argvs[2] argvs[3]...
   
-   argvs[1]  :  ??????????   -->   !!!!!!!!!!
-   argvs[2]  :  ??????????   -->   !!!!!!!!!!
-   argvs[3]  :  ??????????   -->   !!!!!!!!!!
- 
-  Options:
-   xxx       :  ??????????   -->   !!!!!!!!!!
-
+   argvs[1]  :  3d object         -->   .obj
+   argvs[2]  :  fp for argvs[1]   -->   .txt
 
 
 """
@@ -29,9 +24,6 @@ from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import connected_components, dijkstra
 import sys
 import numpy as np
-# from OpenGL.GL import *
-# from OpenGL.GLU import *
-# from OpenGL.GLUT import *
 import queue
 import os
 
