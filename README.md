@@ -4,6 +4,6 @@
 
 ## How to run
 
-`python3 main.py argvs[1] argvs[2]`
-`argvs[1] --> 最短経路を求めたい.objファイルへのパス`
-`argvs[2] --> 求めたい頂点のインデックスが書かれた.txtファイルへのパス`
+`python3 main.py argvs[1] argvs[2]  
+argvs[1] --> 最短経路を求めたい.objファイルへのパス  
+argvs[2] --> 求めたい頂点のインデックスが書かれた.txtファイルへのパス`
