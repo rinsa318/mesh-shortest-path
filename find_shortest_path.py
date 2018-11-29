@@ -5,7 +5,7 @@
   @Email: rinsa@suou.waseda.jp
   @Date: 2018-11-20 16:02:46
   @Last Modified by:   Tsukasa Nozawa
-  @Last Modified time: 2018-11-26 23:21:46
+  @Last Modified time: 2018-11-29 15:30:47
  ----------------------------------------------------
 
   Usage:
@@ -41,7 +41,7 @@ argvs = sys.argv
 
 def init(width, height):
   """ initialize """
-  glClearColor(102.0 / 255.0, 102.0 / 255.0, 204.0 / 255.0, 1.0)
+  glClearColor(0.3, 0.3, 0.5, 1.0)
   glEnable(GL_DEPTH_TEST) # enable shading
   glEnable(GL_CULL_FACE)
   glCullFace(GL_BACK)
