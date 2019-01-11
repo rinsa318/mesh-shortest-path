@@ -26,6 +26,6 @@ python main.py ./test/test.obj ./test/test_fp.txt
 以下が保存
 
 ```
-./test_fp/inside.obj --> 上図の赤線内の領域
-./test_fp/shortest-path.txt --> 上図の赤線のインデックス
+./test/test_fp/inside.obj --> 上図の赤線内の領域
+./test/test_fp/shortest-path.txt --> 上図の赤線のインデックス
 ```
